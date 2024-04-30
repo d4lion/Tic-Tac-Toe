@@ -1,13 +1,15 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Square } from './components/Square'
 import  { ModalWin } from './components/ModalWin'
 import { checkIfWin } from './logic/checkIfWin.js'
 import { TURN } from './constants/constant'
 
 
-
-
+// Music dependencies
+import useSound from 'use-sound'
+import WinSound from "../public/WinSound.mp3"
+ 
 
 export function Game() {
   const [board, SetBoard] = useState(() => {
@@ -27,9 +29,23 @@ export function Game() {
   */
   const [winner, setWinner] = useState(null)
   const [wins, setWins] = useState([{ "X": 0, "O": 0 }])
+  const [playMusic, setPlayMusic] = useState(false)
 
 
-  function updateWinnerCount(winner) {
+  // Music usage 
+  const [play] = useSound(WinSound)
+
+
+  useEffect(() => {
+    if (playMusic) {
+      updateWinnerCount()
+      play()
+      setPlayMusic(false)
+    }
+
+  }, [playMusic])
+
+  function updateWinnerCount() {
     const newWins = [...wins]
     newWins[0][winner]++
     setWins(newWins)
@@ -58,6 +74,11 @@ export function Game() {
     const PosibleWinner = checkIfWin(newBoard)
     setWinner(PosibleWinner)
 
+    if (PosibleWinner) {
+      const playMusicState = playMusic
+      setPlayMusic(!playMusicState)
+    }
+
   }
 
   function resetMatch() {
@@ -79,6 +100,12 @@ export function Game() {
 
     }
   }
+
+
+  // TODO: Crear un hover donde se pueda ver el puntaje de cada uno de los jugadores
+  // En el momento que raton se pase por el visualizador de turnos
+
+  console.log(wins[0])
 
 
   return (
@@ -121,6 +148,7 @@ export function Game() {
             : ""
           }
         >
+          
           O
         </span>     
       </div>
