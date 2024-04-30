@@ -1,0 +1,37 @@
+.play-music-button {
+    display: grid;
+    place-content: center;
+    height: 40px;
+    width: 50px;
+    position: fixed;
+    left: 20px;
+    bottom: 35px;
+    background-color: rgba(80, 255, 80, 0.568);
+}
+
+
+@media (min-width: 600px) {
+    .play-music-button {
+        display: grid;
+        place-content: center;
+        height: 40px;
+        width: 50px;
+        position: relative;
+        left: 20px;
+        bottom: 20px;
+        background-color: rgba(80, 255, 80, 0.568);
+    }
+}
+
+
+.play-music-button:hover {
+    background-color: rgba(80, 255, 80, 0.381);
+}
+
+.play-music-button>img {
+    opacity: 0.7;
+}
+
+.play-music-button:hover>img {
+    opacity: 0.5;
+}
