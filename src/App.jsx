@@ -1,5 +1,5 @@
 import { Game } from "./Game.jsx"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 // importacion de musica y dependencias de musica 
 import useSound from "use-sound"
@@ -45,8 +45,7 @@ export function App() {
   return (
     <>
       <Game />
-      <PlayingButton/>
-  
+      <PlayingButton />  
     </>
   )
 }
