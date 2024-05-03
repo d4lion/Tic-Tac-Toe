@@ -32,8 +32,13 @@ export function Game() {
   const [playMusic, setPlayMusic] = useState(false)
 
 
-  // Music usage 
-  const [play] = useSound(WinSound)
+
+  // Music usage statemen
+  const [play] = useSound(WinSound, {
+    volume: 0.5,
+  })
+
+
 
 
   useEffect(() => {
@@ -43,8 +48,9 @@ export function Game() {
       setPlayMusic(false)
     }
 
-  }, [playMusic])
+  }, [play, playMusic, updateWinnerCount])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function updateWinnerCount() {
     const newWins = [...wins]
     newWins[0][winner]++
