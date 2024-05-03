@@ -44,7 +44,15 @@ body {
   gap: 2rem;
   font-size: 40px;
   margin-top: 3rem;
+
 }
+
+
+.display-turno-container>span {
+  pointer-events: none;
+  cursor: none;
+}
+
 
 .display-turno-container>span {
   height: 60px;
