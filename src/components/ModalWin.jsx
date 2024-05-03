@@ -1,6 +1,7 @@
 import { Square } from "./Square"
-import Confetti from 'react-confetti'
+import Confetti from "react-confetti"
 
+// eslint-disable-next-line react/prop-types
 export function ModalWin({ winner, resetMatch }) {
 
 
